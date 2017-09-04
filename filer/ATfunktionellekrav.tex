@@ -1,0 +1,185 @@
+\section{Test af funktionelle krav}
+\subsection{Tilføj patient}
+%Tabel for Tiløj patient:
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Tilføj Patient} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{c|}{\parbox{0.8\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Sundhedspersonalet har valgt en tom 'Patientboks' 
+\item Patientdata er til rådighed for sundhedspersonalet 
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1 & Tryk på knappen 'Tilføj patient' i 'Panelet' på UIKontor & Alle tekstbokse og knapper i 'Panelet' på UIKontor bliver enabled & & \\\hline
+
+2-6 & Indtast patientens data i de tilhørende felter & Patientinformationerne står i de tilhørende tekstbokse & & \\\hline
+
+7 & Tryk på knappen 'Gem' i 'Panelet' på UIKontor & Alle tekstbokse og knapper i 'Panelet' på UIKontor bliver disabled med undtagelse af knapperne 'Rediger' og 'Fjern patient'. Patientens data kan ses gemt i databasen. & & \\\hline
+
+\end{tabular}
+%------------------------------------------------------------------------
+\\
+\subsection{Start monitorering}
+%Tabel for Start monitorering
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Start monitorering} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{c|}{\parbox{0.8\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item UIPatient vises med default værdier
+\item Patienten har påmonteret elektroder
+\item Elektroder er tilkoblet EKG-måleren
+\item Use case 'Tilføj patient' er foretaget
+\item 'Start/Stop-indikatoren' er rød
+\item {[I dette projekt er patienten simuleret vha. analog discovery's waveform generator med data fra physiobank]}
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1-4 & Tryk på 'Start' i 'Patientboksen' på UIKontor & 'Start/stop-indikatoren' bliver grøn og efter 5 sekunder (+/- 1 sekund) vises EKG-målinger, HRV, Puls og en af diagnoserne (D1, D2, D3, D4) på UIPatient. EKG-målingerne er gemt i databasen. & & \\\hline
+
+5 & Efter første måling observeres UIPatient & Efter 5 sekunder (+/- 1 sekund) fremvises 5 sekunders nye EKG-målinger, HRV, Puls og en af diagnoserne (D1, D2, D3, D4) på UIPatient. De nye EKG-målinger er gemt i databasen.  & & \\\hline
+
+6 & Observer UIPatient & For hvert femte sekund (+/- 1 sekund) opdateres EKG-målingen, HRV, Puls og en af diagnoserne (D1, D2, D3, D4) på UIPatient. Hver måling er gemt i databasen.   & & \\\hline
+\end{tabular}
+\\
+%------------------------------------------------------------------------
+\subsection{Stop monitorering}
+%Tabel for Stop monitorering
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Stop monitorering} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{c|}{\parbox{0.8\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Use case 'Start monitorering' er aktiv
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1-3 & Tryk på 'Stop' i 'Patientboksen' på UIKontor & 'Start/stop-indikatoren' bliver rød og default værdier vises på UIPatient & & \\\hline
+
+\end{tabular}
+\\
+%------------------------------------------------------------------------
+\subsection{Vis patientdata}
+%Tabel for Vis patientdata
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Vis patientdata} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{c|}{\parbox{0.8\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Patienten, der ønskes data fra, er allerede tilføjet G4-EKG 
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1-2 & Tryk på 'Patientboksen' på UIKontor & Alle patientdata til den tilhørende 'Patientboks' vises i 'Panelet' på UIKontor & & \\\hline
+
+\end{tabular}
+\\
+%------------------------------------------------------------------------
+
+\subsection{Rediger patientdata}
+%Tabel for Rediger patientdata
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Rediger patientdata} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{c|}{\parbox{0.8\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Patientdata, der ønskes redigeret, er allerede tilføjet G4-EKG 
+\item Sundhedspersonalet har trykket på den 'Patientboks' der tilhører den patients data, som ønskes redigeret
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1 & Tryk på 'Rediger' i 'Panelet' på UIKontor & Følgende tekstbokse og knapper i 'Panelet' bliver enabled: 'Fornavn', 'Efternavn', 'CPR', 'Stue nr', 'Indlæggelsesdato' og knappen 'Gem' & & \\\hline
+
+2 & Rediger i felterne 'Fornavn', 'Efternavn', 'CPR', 'Stue nr', 'Indlæggelsesdato' i 'Panelet' på UIKontor & De redigerede patientinformationer står i de tilhørende tekstbokse & & \\\hline
+
+3 & Tryk på knappen 'Gem' i 'Panelet' på UIKontor & Alle tekstbokse og knapper i 'Panelet' på UIKontor bliver disabled med undtagelse af knapperne 'Rediger' og 'Fjern patient'. Patientens data kan ses gemt i databasen. & & \\\hline
+
+\end{tabular}
+\\
+
+%------------------------------------------------------------------------
+\subsection{Udskriv EKG}
+%Tabel for Udskriv EKG
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Udskriv EKG} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{c|}{\parbox{0.8\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Use case 'Start monitorering' er kørt 
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1-2 & Tryk på 'Udskriv' i 'Patientboksen' på UIKontor & UIUdskriv åbnes & & \\\hline
+
+3-6 & Vælg ønsket tidspunkt samt tidsinterval for målte data og tryk på 'Udskriv' på UIUdskriv & EKG for valgte tidspunkt og tidsinterval vises på UIUdskriv & & \\\hline
+
+\end{tabular}
+\\
+%------------------------------------------------------------------------
+
+\subsection{Fjern patient}
+%Tabel for Fjern patient
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Fjern Patient} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{c|}{\parbox{0.8\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Patienten, der ønskes fjernet, er allerede tilføjet G4-EKG
+\item Sundhedspersonalet har trykket på den 'Patientboks', som tilhører den patient, der ønkes fjernet
+\item Der udføres ikke EKG-målinger på patienten, der ønskes fjernet.  
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1-2 & Tryk på knappen 'Fjern patient' i 'Panelet' på UIKontor & Alle data i 'Panelet' og 'Patientboksen' fjernes & & \\\hline
+
+\end{tabular}
+\\
+%------------------------------------------------------------------------
+
+
+
+
+

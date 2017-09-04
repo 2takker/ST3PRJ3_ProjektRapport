@@ -1,0 +1,451 @@
+\chapter{Kravspecifikation}
+\section{Indhold}
+\begin{itemize}[label=$\circ$]
+\item{Aktør-kontekst diagram}
+\item{Aktørbeskrivelser}
+\item{Use case diagram}
+\item{Funktionelle krav: Fully dressed use cases}
+\item{Ikke-funktionelle krav}
+\end{itemize}
+
+\section{Aktør-kontekst diagram}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{billeder/Aktorkontekst2.jpg}
+\caption{Aktør-kontekst diagram}
+\label{fig:aktør-kontekst}
+\end{figure}
+\newpage
+
+\section{Aktørbeskrivelser}
+\begin{table}[H]
+\begin{tabular}{|l|p{13cm}|}
+\hline
+\textbf{Aktør:} & \textbf{Sundhedspersonale}\\\hline
+\textbf{Type:} & Primær \\\hline
+\textbf{Beskrivelse:} & Sundhedspersonalet kan via UIPatient og UIPrint aflæse EKG-målingen og derudfra vha. faglig viden bestemme puls, HRV og eventuelle arrytmier. \\\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{|l|p{13cm}|}
+\hline
+\textbf{Aktør:} & \textbf{Patient}\\\hline
+\textbf{Type:} & Sekundær \\\hline
+\textbf{Beskrivelse:} & Bidrager med EKG-data. I dette projekt er patienten simuleret vha. analog discovery's waweform generator med data fra physiobank. \\\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{|l|p{13cm}|}
+\hline
+\textbf{Aktør:} & \textbf{Måleudstyr}\\\hline
+\textbf{Type:} & Sekundær \\\hline
+\textbf{Beskrivelse:} & Måler og videregiver EKG-data fra patienten til EKG-systemet. \\\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{|l|p{13cm}|}
+\hline
+\textbf{Aktør:} & \textbf{Lokal Database}\\\hline
+\textbf{Type:} & Sekundær \\\hline
+\textbf{Beskrivelse:} & EKG-målinger, patientdata og sundhedspersonaledata gemmes i databasen. Målinger, patient- og sundhedspersonale data kan hentes fra databasen.  \\\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{|l|p{13cm}|}
+\hline
+\textbf{Aktør:} & \textbf{Offentlig Database}\\\hline
+\textbf{Type:} & Sekundær \\\hline
+\textbf{Beskrivelse:} & EKG-målinger, patient- og sundhedspersonale data gemmes i databasen. \\\hline
+\end{tabular}
+\end{table}
+
+\section{Use-case diagram}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{billeder/Usecase2.jpg}
+\caption{Use case diagram}
+\label{fig:aktør-kontekst}
+\end{figure}
+\newpage
+
+\section{Funktionelle krav: Fully dressed use cases}
+\subsection{Indskriv patient}
+\begin{table}[H]
+\begin{tabular}{|p{5.5cm}|p{10cm}|}
+\hline
+\textbf{Navn:} & \textbf{Indskriv patient}\\\hline
+\textbf{Mål:} & Patientens- og sundhedspersonalets data er tilføjet til G4-EKG og lokaldatabasen. \\\hline
+\textbf{Initiering:} & Sundhedspersonalet trykker på knappen ‘Indskriv’ i ‘Panelet’ på UIKontor \\\hline
+\textbf{Aktør:} & Sundhedspersonale \\\hline
+\textbf{Antal samtidige forekomster:} & Ingen \\\hline
+\textbf{Prækondition:} & \begin{itemize}[label=$\circ$]
+\item{Sundhedspersonalet har valgt en tom 'Patientboks'}
+\item{Patientdata er til rådighed for sundhedspersonalet}
+\item{'Annuller'-knappen er disabled }
+ \end{itemize}
+\\\hline
+\textbf{Postkondition:} & Patient- og sundhedspersonalets data gemmes i databasen og vises i 'Panelet' og den valgte 'Patientboks' \\\hline
+\textbf{Hovedscenarie:} &
+{\begin{enumerate}
+\item{Sundhedspersonalet trykker på knappen 'Indskriv' i 'Panelet' på UIKontor}
+\item{Alle tekstbokse og knapperne, 'Gem' og 'Annuller', i 'Panelet' på UIKontor bliver enabled}
+\item{Sundhedspersonalet indtaster patientens fornavn i feltet 'Fornavn' i ‘Panelet’ på UIKontor} 
+\item{Sundhedspersonalet indtaster patientens efternavn i feltet ‘Efternavn’ i ‘Panelet’ på UIKontor}
+\item{Sundhedspersonalet indtaster patientens CPR-nummer i feltet ‘CPR’ i ‘Panelet’ på UIKontor}
+\item{Sundhedspersonalet indtaster patientens stuenummer i feltet ‘Stue nr’ i ‘Panelet’ på UIKontor}
+\item{Sundhedspersonalet vælger patientens indlæggelsesdato og tidspunkt i datetimepicker ‘Indlæggelsedato’ i ‘Panelet’ på UIKontor}
+\item{Sundhedspersonalet indtaster den ansvarliges fornavn, efternavn, organisation og medarbejder ID i felterne 'Ansvarlig fornavn', 'Ansvarlig efternavn', 'Organisation' og 'Ansvarlig medarbejder ID' i ‘Panelet’ på UIKontor}
+{\begin{itemize}[label=$\circ$]
+\item {[Exceptions 1: 'Annuller'-knappen kan trykkes på mellem alle punkterne fra 1 til og med 8] }
+\end{itemize}}
+\item{Sundhedspersonalet trykker på knappen ‘Gem’ i ‘Panelet’ på UIKontor og patientens og sundhedspersonalets indtastede data gemmes i den lokale database.}
+\item{Alle textbokse og knapper i ‘Panelet’ på UIKontor er disabled, undtagen 'Rediger' og 'Udskriv'.}
+\end{enumerate}}\\\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{|p{5.5cm}|p{10cm}|}
+\hline
+\textbf{Undtagelse:} & [Exception 1: 'Annuller'-knappen enables:]
+\begin{enumerate}
+\item {Fagpersonen annullerer: 
+\begin{itemize}[label=$\circ$]
+\item { Fagperson trykker på knappen 'Annuller' og annullerer handlingen. 'Panelets tekstboxe' går tilbage til default værdier }
+\end{itemize}}
+\end{enumerate}\\\hline
+\end{tabular}
+\end{table}
+
+\subsection{Start monitorering}
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Navn:} & \textbf{Start monitorering}\\\hline
+\textbf{Mål:} & CPR-nummer, EKG, puls, HRV og indikation vises på UIPatient og målingen gemmes i lokaldatabasen og i den offentlige database. \\\hline
+\textbf{Initiering:} & Sundhedspersonale trykker på knappen 'Start' i 'Patientboks' på UIKontor \\\hline
+\textbf{Aktør:} & Sundhedspersonale \\\hline
+\textbf{Antal samtidige forekomster:} & Ingen \\\hline
+\textbf{Prækondition:} & \begin{itemize}[label=$\circ$]
+\item{Patient har påmonteret elektroder}
+\item{Elektroderne er tilkoblet EKG-måleren}
+\item{EKG-måleren er tændt og tilkoblet G4-EKG}
+\item{Use case 'Indskriv patient' er kørt}
+\item{'Start/Stop-Indikatoren' er rød}
+\item{G4-EKG er tilkoblet den lokaledatabase og den offentlige database}
+\item{[I dette projekt er patienten simuleret vha. analog discovery's waweform generator med data fra physiobank] }
+\end{itemize}
+\\\hline
+\textbf{Postkondition:} & EKG, puls, HRV og indikation vises på UIPatient \\\hline
+\textbf{Hovedscenarie:} &
+{\begin{enumerate}
+\item{Sundhedspersonalet trykker på knappen 'Start' i 'Patientboks' på UIKontor}
+\item{'Start/Stop-indikatoren' bliver grøn og signalerer at systemet kører} 
+\item{G4-EKG renderer EKG til UIPatient, og viser efter 10 sekunder (+ 1 sekund), 10 sekunders EKG-målinger, samt puls, HRV og hvis detekteret, en af følgende indikationer: {\begin{itemize}[label=$\circ$]
+\item {D1 - STEMI}  [Exception 1: Alarm]
+\item {D2 - NONSTEMI}  [Exception 1: Alarm]
+\end{itemize}}
+\item {Måling gemmes i den lokale database}
+\item {Måling gemmes i den offentlige database}
+\item {Efter 10 sekunder vises 10 nye sekunders EKG-målinger, samt puls, HRV og hvis detekteret, en de førnævnte indikationer(se punkt 3)}
+\item {Punkt 3,4 og 5 gentages indtil der trykkes på knappen 'Stop'(se use case 'Stop monitorering')}
+\end{enumerate}}\\\hline
+\textbf{Undtagelser:} & [Exception 1: Alarm]
+\begin{enumerate}
+\item {Alarm starter: 
+\begin{itemize}[label=$\circ$]
+\item {Alarm lyder på kontor}
+\end{itemize}}
+\end{enumerate}\\\hline
+\end{tabular}
+\end{table}
+
+\subsection{Stop monitorering}
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Navn:} & \textbf{Stop monitorering}\\\hline
+\textbf{Mål:} & 'Default UIPatient' vises på UIPatient \\\hline
+\textbf{Initiering:} & Sundhedspersonale trykker på knappen 'Stop' i 'Patientboksen' på UIKontor \\\hline
+\textbf{Aktør:} & Sundhedspersonale \\\hline
+\textbf{Antal samtidige forekomster:} & Ingen \\\hline
+\textbf{Prækondition:} & \begin{itemize}[label=$\circ$]
+\item{Use case 'Start monitorering' er aktiv}
+\end{itemize}\\\hline
+\textbf{Postkondition:} & 'Default UIPatient' vises på UIPatient \\\hline
+\textbf{Hovedscenarie:} & {\begin{enumerate}
+\item{Sundhedspersonalet trykker på knappen 'Stop' i 'Patientboksen' på UIKontor}
+\item{Default værdier vises på UIPatient}
+\item{'Start/Stop-indikatoren' er rød} 
+\end{enumerate}}\\\hline
+\end{tabular}
+\end{table}
+
+\subsection{Vis patientdata}
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Navn:} & \textbf{Vis patientdata}\\\hline
+\textbf{Mål:} & Patientdata samt sundhedspersonalets data vises på i ‘Panelet’ på UIKontor \\\hline
+\textbf{Initiering:} & Sundhedspersonalet trykker på den ‘Patientboks’, som tilhører den patient, der ønskes data fra \\\hline
+\textbf{Aktør:} & Sundhedspersonale \\\hline
+\textbf{Antal samtidige forekomster:} & Ingen \\\hline
+\textbf{Prækondition:} & \begin{itemize}[label=$\circ$]
+\item{Patienten, der ønskes data fra, er allerede tilføjet til G4-EKG(se use case ‘Indskriv patient’)}
+\end{itemize}
+\\\hline
+\textbf{Postkondition:} & Patienten samt det tilhørende sundhedspersonales data vises i ‘Panelet’ på UIKontor \\\hline
+\textbf{Hovedscenarie:} &
+\begin{enumerate}
+\item{Sundhedspersonalet trykker på den ‘Patientboks’ tilhørende den patient, der ønskes data fra }
+\item{Patientens samt den tilhørende sundhedspersonales data vises i ‘Panelet’ på UIKontor}
+\end{enumerate}\\\hline
+\end{tabular}
+\end{table}
+\newpage
+
+\subsection{Rediger patientdata}
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Navn:} & \textbf{Rediger patientdata}\\\hline
+\textbf{Mål:} & De ønskede patient- og sundhedspersonale data er redigeret i G4-EKG \\\hline
+\textbf{Initiering:} & Sundhedspersonalet trykker på knappen ‘Rediger’ i ‘Panelet’ på UIKontor \\\hline
+\textbf{Aktør:} & Sundhedspersonale \\\hline
+\textbf{Antal samtidige forekomster:} & Ingen \\\hline
+\textbf{Prækondition:} & \begin{itemize}[label=$\circ$]
+\item{Patientdata, der ønskes redigeret, er allerede tilføjet til G4-EKG(se use case ‘Indskriv patient’)}
+\item{Sundhedspersonalet har trykket på den ‘Patientboks’ der tilhører den patients data, der ønskes redigeret}
+\item{'Annuller'-knappen er disabled }
+\end{itemize}
+\\\hline
+\textbf{Postkondition:} & Den valgte patients- og sundhedspersonalets data er redigeret\\\hline
+\textbf{Hovedscenarie:} &
+\begin{enumerate}
+\item{Sundhedspersonalet trykker på knappen ‘Rediger’ i ‘Panelet’ på UIKontor}
+\item{Følgende tekstbokse og knapper i 'Panelet' bliver enabled: 'Fornavn', 'Efternavn', 'CPR', 'Stue nr', 'Indlæggelsesdato', 'Ansvarlig ID', 'Ansvarlig Fornavn', 'Ansvarlig Efternavn', 'Organisation', knappen 'Gem' og 'Annuller'}
+\item{Sundhedspersonalet kan redigere i flg. felter i ‘Panelet’ på UIKontor \begin{itemize}[label=$\circ$]
+\item{'Fornavn'}
+\item{'Efternavn'}
+\item{'CPR'}
+\item{'Stue nr'}
+\item{'Indlæggelsesdato'}
+\item{'Ansvarlig ID'}
+\item{'Ansvarlig Fornavn'}
+\item{'Ansvarlig Efternavn'}
+\item{'Organisation'}
+\end{itemize}}
+{\begin{itemize}[label=$\circ$]
+\item {[Exception 1: 'Annuller'-knappen enables og kan trykkes på mellem alle ovenstående punkter }
+\end{itemize}}
+\item{Sundhedspersonalet trykker på knappen ‘Gem’ i ‘Panelet’ på UIKontor, og det gemmes i den lokal database}
+\end{enumerate}\\\hline
+\textbf{Undtagelser:} & [Exception 1: 'Annuller'-knappen enables:]
+\begin{enumerate}
+\item {Sundhedspersonalet annullerer: 
+\begin{itemize}[label=$\circ$]
+\item { Sundhedspersonale trykker på 'Annuller'. 'Panelets' tekstboxe skifter til default værdier }
+\end{itemize}}
+\end{enumerate}\\\hline
+\end{tabular}
+\end{table}
+
+\subsection{Print EKG}
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Navn:} & \textbf{Print EKG}\\\hline
+\textbf{Mål:} & Printer et stillestående EKG  \\\hline
+\textbf{Initiering:} & Sundhedspersonale trykker på knappen 'Print' i 'Patientboks' på UIKontor.
+ \\\hline
+\textbf{Aktør:} & Sundhedspersonale \\\hline
+\textbf{Antal samtidige forekomster:} & Ingen \\\hline
+\textbf{Prækondition:} & \begin{itemize}[label=$\circ$]
+\item{Use case 'Start monitorering' er kørt  }
+\end{itemize}
+\\\hline
+\textbf{Postkondition:} & UIPrint vises for den valgte patient \\\hline
+\textbf{Hovedscenarie:} & 
+{\begin{enumerate}
+\item{Sundhedspersonalet trykker på knappen 'Print' i den  'Patientboks' på UIKontor, som tilhører den patient, hvis EKG ønskes udskrevet }
+\item{UIPrint åbnes}
+\item{Sundhedspersonalet vælger om det skal være fra den lokale database eller den offentlige database}
+\item{Sundhedspersonalet vælger hvilket tidspunkt af målte data, som ønskes udskrevet på UIPrint}
+\item{Sundhedspersonalet trykker på knappen 'Print' på UIPrint}
+\item{EKG for valgte tidspunkt og database vises på UIPrint}
+\end{enumerate}}\\\hline
+\end{tabular}
+\end{table}
+
+\subsection{Udskriv patient}
+\begin{table}[H]
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Navn:} & \textbf{Udskriv patient}\\\hline
+\textbf{Mål:} & Patienten er udskrevet fra ‘Panelet’ og ‘Patientboks’ på UIKontor \\\hline
+\textbf{Initiering:} & Sundhedspersonale trykker på knappen ‘Udskriv’ i ‘Panelet’ på UIKontor \\\hline
+\textbf{Aktør:} & Sundhedspersonale \\\hline
+\textbf{Antal samtidige forekomster:} & Ingen \\\hline
+\textbf{Prækondition:} & \begin{itemize}[label=$\circ$]
+\item{Patienten, der ønskes udskrevet, er allerede tilføjet til G4-EKG(se use case ‘Indskriv patient’)}
+\item{Sundhedspersonalet har trykket på den ‘Patientboks’ der tilhører den patient, der ønskes udskrevet}
+\item{Der udføres ikke EKG-målinger på patienten, der ønskes udskrevet(se use case ‘Stop monitorering’)}
+\end{itemize}
+\\\hline
+\textbf{Postkondition:} & Patienten er udskrevet fra ‘Panelet’ og ‘Patientboks’ på UIKontor \\\hline
+\textbf{Hovedscenarie:} &
+\begin{enumerate}
+\item{Sundhedspersonalet trykker på knappen ‘Udskriv’ i ‘Panelet’ på UIKontor}
+\item {Messagebox vises med teksten: 'Er du sikker på at du vil udskrive denne patient'
+\item Sundhedspersonalet trykker på knappen 'Ja'}
+{\begin{itemize}[label=$\circ$]
+\item {[Exception 1: Nej] }
+\end{itemize}}
+\item{Patientens data fjernes fra ‘Panelet’ og ‘Patientboks’ på UIKontor}
+\end{enumerate}\\\hline
+\textbf{Undtagelser:} & [Exception 1: Nej]
+\begin{enumerate}
+\item {Fagperson trykker på knappen 'Nej'
+\begin{itemize}[label=$\circ$]
+\item {Handlingen annulleres}
+\end{itemize}}
+\end{enumerate}\\\hline
+\end{tabular}
+\end{table}
+
+\section{Ikke-funktionelle krav}
+\subsection{Generelle ikke-funktionelle krav}
+\begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{6cm}|p{3cm}|p{3cm}|}
+\hline
+\textbf{Nr.} & \textbf{Krav} & \textbf{FURPS}& \textbf{MoSCow} \\\hline
+ 1 &  Ved alarm spilles Bee Gees 'Staying Alive' & Performance & Skal \\\hline
+ 2 & Efter 10 minutters introduktion til systemet, bør en bruger kunne fortage en måling på en patient & Usability  & Bør \\\hline
+ 3 & Systemet skal kunne detektere 95\% af alle tilfælde af: STEMI og Non-STEMI & Reliability  & Skal \\\hline
+ 4 & Systemet måler EKG'et med en frekvens på 500 Hz & Usability & Skal \\\hline
+ 5 & Systemet skal kunne foretage målinger fejlfrit i minimum 30 minutter & Usability & Skal \\\hline
+ 6 & Systemet er kompatibelt på alle Windows platforme nyere end Windows XP til og med Windows 10 & Supportability & Skal \\\hline
+ 7 & Systemet skal kunne håndtere 6 patienter ad gangen med én EKG-afledning pr. patient & Performance & Skal \\\hline 
+\end{tabular}
+\end{table}
+
+\subsection{UIKontor}
+\begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{6cm}|p{3cm}|p{3cm}|}
+\hline
+\textbf{Nr.} & \textbf{Krav} & \textbf{FURPS}& \textbf{MoSCow} \\\hline
+1 & UIKontor består af 'panelet' i vestre side og 6 'patientbokse' i højre side & Usability & Bør \\\hline
+2 & De 6 'patientbokse' er med default værdier identiske & Usability & Skal \\\hline
+3 & 'Panelet' repræsenterer den valgte 'Patientboks'' data & Usability & Skal \\\hline
+4 & 'Panelet' har knappen 'Indskriv' & Usability & Skal \\\hline
+5 & 'Panelet' har knappen 'Udskriv' & Usability & Skal \\\hline
+6 & 'Panelet' har knappen  'Rediger' & Usability & Skal \\\hline
+7 & 'Panelet' har knappen  'Gem' & Usability & Skal \\\hline
+8 & 'Panelet' har knappen  'Annuller' & Usability & Skal \\\hline
+9 & 'Panelet' har textboksen  'Patient Fornavn' med tilhørende label 'Patient Fornavn' & Usability & Skal \\\hline
+10 & 'Panelet' har textboksen  'Patient Efternavn' med tilhørende label 'Patient Efternavn' & Usability & Skal \\\hline
+11 & 'Panelet' har textboksen  'CPR' med tilhørende label 'CPR' & Usability & Skal \\\hline
+12 & 'Panelet' har textboksen  'Stue Nr' med tilhørende label 'Stue Nr' & Usability & Skal \\\hline
+13 & 'Panelet' har en datetimepicker  'Indlæggelsesdato' med tilhørende label 'Indlæggelsesdato' & Usability & Skal \\\hline
+
+14 & 'Panelet' har tekstboksen  'Ansvarlig Fornavn' med tilhørende label 'Ansvarlig Fornavn' & Usability & Skal \\\hline
+15 & 'Panelet' har tekstboksen  'Ansvarlig Efternavn' med tilhørende label 'Ansvarlig Efternavn' & Usability & Skal \\\hline
+16 & 'Panelet' har tekstboksen  'Organisation' med tilhørende label 'Organisation' & Usability & Skal \\\hline
+17 & 'Panelet' har tekstboksen  'Ansvarlig ID' med tilhørende label 'Ansvarlig ID' & Usability & Skal \\\hline
+
+18 & Alle knapper og textbokse er pr default disabled & Usability & Skal \\\hline
+19 & 'Patientboks' har knappen 'Start' & Usability & Skal \\\hline
+20 & 'Patientboks' har knappen 'Stop' & Usability & Skal \\\hline
+21 & 'Patientboks' har knappen 'Print'& Usability & Skal \\\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{6cm}|p{3cm}|p{3cm}|}
+\hline
+\textbf{Nr.} & \textbf{Krav} & \textbf{FURPS}& \textbf{MoSCow} \\\hline
+22 & 'Patientboks' har en 'Start/Stop-indikator' & Usability & Skal \\\hline
+23 & Når monitoreringen foretages er 'Start/Stop-indikatoren' grøn(RGB:99,209,62) & Usability & Skal \\\hline
+24 & Når monitoreringen ikke foretages er 'Start/Stop-indikatoren' rød(RGB:255,62,51)& Usability & Skal \\\hline
+25 & Når der ikke er tilføjet en patient til en 'Patientboks' er 'Start/Stop-indikatoren' grå(RBG:210,210,210) & Usability & Skal \\\hline
+26 & 'Patientboks' har en label 'CPR Nr:' med tilhørende tekstboks & Usability & Skal \\\hline
+27 & 'Patientboks' har en label 'Stue Nr:' med tilhørende tekstboks & Usability& Skal \\\hline
+28 & Ved alarm bliver den pågældende 'Patientboks' rød(RGB:255,0,0) & Usability & Skal \\\hline
+29 & Brugergrænseflade skal opbygges efter figur 1.3 &  Usability & Skal \\\hline
+\end{tabular}
+\end{table}
+
+\subsection{UIPatient}
+\begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{6cm}|p{3cm}|p{3cm}|}
+\hline
+\textbf{Nr.} & \textbf{Krav} & \textbf{FURPS}& \textbf{MoSCow} \\\hline
+1 & UIPatient har textboksen  'Puls bpm' med tilhørende label 'Puls bpm' & Usability & Skal \\\hline
+2 & UIPatient har textboksen  'HRV' med tilhørende label 'HRV' & Usability & Skal \\\hline
+3 & UIPatient har textboksen  'BT mmHg' med tilhørende label 'BT mmHg' & Usability & Skal \\\hline
+4 & UIPatient har textboksen  'SpO2 \%' med tilhørende label 'SpO2 \%' & Usability & Skal \\\hline
+5 & UIPatient har textboksen  'Indikationsboks' med tilhørende label 'Indikation'& Usability & Skal \\\hline
+6 & UIPatient har en chart med tilhørende label 'EKG' & Usability & Skal \\\hline
+7 & Alle textbokse og labels er disabled & Usability & Skal \\\hline
+8 & Brugergrænseflade skal opbygges efter figur 1.4 & Usability & Skal \\\hline
+\end{tabular}
+\end{table}
+
+\subsection{UIPrint}
+\begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{6cm}|p{3cm}|p{3cm}|}
+\hline
+1 & UIPrint har en chart med en label 'EKG' & Usability & Skal \\\hline
+2 & Charten har gitterlinjer svarende til 0.04 sekunder på x-aksen og 0.1mV på y-aksen & Usability & Skal \\\hline
+3 & UIPrint har en combobox med en label 'Tidspunkt:' & Usability & Skal \\\hline
+4 & UIPrint har en combobox med en label 'Database:' & Usability & Skal \\\hline
+5 & Comboboxens valgmuligheder er "Lokal' og 'Offentlig' database & Usability & Skal \\\hline
+6 & UIPrint har knappen 'Print' & Usability & Skal \\\hline
+7 & Brugergrænsefladen skal opbygges efter figur 1.5 & Usability & Skal \\\hline
+\end{tabular}
+\end{table}
+
+\section{Brugergrænseflade}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{billeder/UIKontor.jpg}
+\caption{UIKontor}
+\label{fig:UIKontor}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{billeder/UIPatient.jpg}
+\caption{UIPatient}
+\label{fig:UIPatient}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{billeder/UIPrint.jpg}
+\caption{UIPrint}
+\label{fig:UIPrint}
+\end{figure}
+
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=0.9\textwidth]{billeder/brugergranseflade.png}
+%\caption{Brugergrænseflade}
+%\label{fig:brugergflade}
+%\end{figure}
+
+\newpage
+
+\section{Undtagelser for G4-EKG}
+\subsection{Ikke funktionelle krav}
+\begin{itemize}[label=$\circ$]
+\item \textbf{Nr. 3 generelle ikke funktionelle krav:} Vi har ikke mulighed for at teste dette krav optimalt, da vores samples er for ensformige. 
+\item \textbf{Nr. 6 generelle ikke funktionelle krav:} Vi har ikke mulighed for at teste dette krav, da vi ikke har nogle computer med styresystem ældre end Windows 10.
+\item \textbf{Nr.7 generelle ikke funktionelle krav:} Vi har ikke mulighed for at lave målinger på 6 patienter, i det vi ikke har udstyret til at simulere 6 patienter. 
+
+\end{itemize}

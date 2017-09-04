@@ -1,0 +1,129 @@
+%%%% Guide til bibtex og litteratur.bib %%%%
+
+% Alle kilder angives efter Harvard-metoden og vil i rapporten fremstaa med [FORFATTER, AAR] eller mere praecist [EFTERNAVN, AAR].
+
+% Nederst findes eksempler paa kildeangivelser af typerne book, article, manual techreport og misc.
+	% - Book bruges ved helt almindelige boeger
+	% - Article bruges ved artikler og udgivelser
+	% - Manual bruges ved henvisninger fra internettet, idet \url-funktionen findes her
+	% - Techreport kan bruges ved mindre udgivelser, hvor kun titel, forfatter og aar er noedvendig eller tilgaengelig
+	% - Misc kan bruges ved det, der falder udenfor de andre kategorier - interview, forelaesninger, foredrag osv. 
+
+% Hvis der er flere forfattere paa en kilde, SKAL de listes med 'and' imellem dem - ogsaa ved 3 og derover (f.eks. FORFATTER 1 and FORFATTER 2 and FORFATTER 3). Naar kildelisten bygges i rapporten, vil der ved 2 forfattere komme til at staa [EFTERNAVN 1 og EFTERNAVN 2, AAR] og ved 3 forfattere og derover komme til at staa [EFTERNAVN 1 et. al, AAR]. 
+
+% Ved almindelige forfatternavne skal der vaere ét saet tuborg-parenteser ved Author (f.eks. author = {H. C. Andersen}). Ved andre navne (f.eks. virksomheder, hjemmesider, grupper, raad, naevn osv.) skal der vaere 2 saet tuborg-parenteser ved Author (f.eks. author = {{Dansk Standard}}). Begrundelse: Med 2 saet tuborg-parenteser skrives hele parentesen ud som forfatter, [Dansk Standard, AAR]. Alternativt ville der i eksemplet bare komme til at staa [Standard, AAR].
+
+%-----------------------------------------------------%
+
+%%%% EKSEMPLER (book, article, manual, techreport og misc) %%%%
+
+@book{fysikbog,
+	title = {Physics for Scientists and Engineers, 7th edition},
+	author = {John W. Jewett and Raymond A. Serway},
+	year = {2008},
+	number = {ISBN: 0-495-11240-2},
+	series = {Paperback},
+	publisher = {Thomson Learning}
+}
+
+@article{maalere,
+	author = {Lars Gullev and Michael Poulsen},
+	title = {The installation of meters leads to permanent changes in consumer behaviour},
+	journal = {News from DBDH},
+	volume = {Journal 3/2006},
+	pages = {s. 20-24},
+	year = {2006}
+}
+
+@manual{renostra,
+	author ={{Klima-, Energi- og Bygningsministeriet}},
+	title ={Strategi for energirenovering af bygninger},
+	address={\url{http://www.ens.dk/info/publikationer/strategi-energirenovering-bygninger}},
+	year ={2014},
+	note ={Downloadet: 23-02-2015}
+}
+
+@techreport{rcf,
+	author = {Bent Flyvbjerg},	
+	title = {Reference class forecasting: Ide, metode og anvendelse},
+	year = {2007}
+}
+
+@misc{videnskabsteori,
+	author = {Victor Hansen},
+	howpublished = {Forårssemesteret},
+	title = {Forelæsning i Videnskabsteori},
+	year = {2014}	
+}
+
+@misc{cd,
+	author ={Bilags-CD},
+	title ={CD med bilag tilhørende B131}	
+}
+
+@book{MedicalBook,
+	title = {Medical Physiology, 2th edition},
+	author = {Wakter F. Boron and Emile L. Boulpaep},
+	year = {2012},
+	number = {ISBN: 978-0-8089-2449-4},
+	series = {Paperback},
+	publisher = {Saunders Elsevier}
+}
+@book{AnaFys,
+	title = {Menneskets anatomi og fysiologi, 2th edition},
+	author = {Olav Sand, Øjstein V. Sjaastad, Egil Haug og Jan G. Bjålie},
+	year = {2006},
+	number = {ISBN: 978-87-12-04298-3},
+	series = {Paperback},
+	publisher = {Gyldendal}
+}
+@misc{FirstAid, 	
+	title = {12 Lead ECG Diagram}, 
+	author = {John Furst}, 
+	year = {2017},
+	howpublished = "\url{http://www.firstaidforfree.com/recording-a-12-lead-ecgekg/12-lead-ecg-diagram/}",
+	note = "{Online, skrevet d.13-Februar-2017}"
+	}
+@misc{EKG, 	
+	title = {EKG Waveform}, 
+	author = {EKG.Academy}, 
+	year = {2009},
+	howpublished = "\url{https://ekg.academy/ekg-waveform-lesson}",
+	note = "{This web site is owned and operated by Clinical Skills Education}"
+	}
+@misc{HRV, 	
+	title = {support.polar.com}, 
+	author = {support.polar.com}, 
+	year = {},
+	howpublished = "\url{http://support.polar.com/us-en/support/Heart_Rate_Variability__HRV}",
+	note = "{This web site is owned and operated by Clinical Skills Education}"
+	}
+@misc{Puls, 	
+	title = {heart.org}, 
+	author = {heart.org}, 
+	year = {2015},
+	howpublished = "\url{http://www.heart.org/HEARTORG/Conditions/More/MyHeartandStrokeNews/All-About-Heart-Rate-Pulse_UCM_438850_Article.jsp#.WLgGIvk1-Ul}",
+	note = "{This web site is owned and operated by Clinical Skills Education}"
+	}
+@misc{EKGForside, 	
+	title = {openclipart.org}, 
+	author = {openclipart.org}, 
+	year = {},
+	howpublished = "\url{https://openclipart.org/detail/233859/heart-ekg}",
+	note = "{This web site is owned and operated by Clinical Skills Education}"
+	}
+@misc{Hjerte, 	
+	title = {Jens Kastrup, Speciallæge}, 
+	author = {sundhed.dk}, 
+	year = {16.07-2015},
+	howpublished = "\url{https://www.sundhed.dk/borger/patienthaandbogen/hjerte-og-blodkar/undersoegelser/ekg/}",
+	note = "{This web site is owned and operated by Clinical Skills Education}"
+	}
+@misc{Hjerteforeningen, 	
+	title = {HjerteTal}, 
+	author = {Hjerteforeningen}, 
+	year = {2016},
+	howpublished = "http://www.hjerteforeningen.dk/det-goer- vi/hjertetal/hjertetaldk/}",
+	note = "{Online, skrevet d.27-Oktober-2016}"
+	}
+	

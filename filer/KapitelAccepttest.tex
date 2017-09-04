@@ -1,0 +1,24 @@
+\chapter{Accepttest}
+
+\section{Test af funktionelle krav}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{billeder/Accepttest121.PNG}
+\end{figure}
+\section{Test af ikke-funktionelle krav}
+\begin{table}[htbp]
+\begin{tabular}{|p{0.5cm}|p{4cm}|p{3cm}|p{3cm}|p{2cm}|p{2cm}|}
+\hline
+\textbf{Nr.} & \textbf{Krav} & \textbf{Test}& \textbf{Forventet observation/ resultat}& \textbf{Faktisk observation/ resultat}& \textbf{Vurdering (OK/FAIL)}\\\hline
+ 1 & Skal indeholde en startknap & Se om der er en startknap & Der er en startknap & &\\\hline
+ 2 & Skal indeholde en "Fjern-Patient"-knap & Se om der er en ”Fjern Patient”-knap & Der er en ”Fjern Patient”-knap & & \\\hline
+ 3 & EKG’et skal fremstilles i intervallet 0 til 5 sekunder på x-aksen & Der trykkes på startknappen & EKG’et fremvises i intervallet 0 til 5 sekunder på x-aksen & & \\\hline
+ 4 & EKG’et skal fremstilles i intervallet -1 til 3 mV y-aksen & Der trykkes på startknappen & EKG’et fremvises i intervallet -1 til 3 mV  y-aksen & & \\\hline
+ 5 & EKG-måleren giver EKG-systemet 2500 målinger med en frekvens på 500 Hz efter tryk på start & Vi trykker på startknappen, og indsætter breakpoint & EKG-systemet indlæser 2500 målinger & & \\\hline
+ 6 & EKG, puls og HRV fremkommer på brugergrænsefladen samtidig & Vi trykker på startknappen & EKG, puls og HRV fremkommer på brugergrænsefladen samtidig & & \\\hline
+ 7 & EKG-, puls- og HRV-data fjernes fra brugergrænsefladen indenfor 1 sekund efter tryk på ”Fjern Patient”-knappen & Vi trykker på ”Fjern Patient”-knappen og venter 1 sekund & EKG-, puls- og HRV-data fjernes fra brugergrænsefladen indenfor 1 sekund efter tryk på ”Fjern Patient”-knappen & & \\\hline
+ 8 & En person uden forhåndskendskab eller tekniske ekspertise skal kunne bruge systemet på egen hånd inden for 3 minutters instruktion i brug af systemet & Vi lader 5 personer uden forhåndskendskab eller teknisk ekspertise teste systemet. Alle skal være i stand til selvstændigt at betjene systemet indenfor 3 minutter & Alle 5 personer kan betjene systemet efter 3 minutter & & \\\hline
+ 9 &Brugergrænsefladen skal opbygges efter figur 2.3 & Se figur 2.3 & Brugergrænsefladen ligner figur 2.3 & & \\\hline
+\end{tabular}
+\end{table}

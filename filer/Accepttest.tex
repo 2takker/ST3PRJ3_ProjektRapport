@@ -1,0 +1,281 @@
+\chapter{Accepttest}
+\section{Test af funktionelle krav}
+\subsection{Indskriv patient}
+%Tabel for Tiløj patient:
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{3cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Indskriv Patient} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{l|}{\parbox{0.6\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Sundhedspersonalet har valgt en tom 'Patientboks' 
+\item Patientdata er til rådighed for sundhedspersonalet 
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1 & Tryk på knappen 'Indskriv' i 'Panelet' på UIKontor & Alle tekstbokse og knapperne 'Gem' og 'Annuller' i 'Panelet' på UIKontor bliver enabled & Alle tekstbokse og knapperne 'Gem' og 'Annuller' i 'Panelet' på UIKontor er blevet enabled & OK \\\hline
+
+2-6 & Indtast patientens og sundhedspersonalets data i de tilhørende felter & Patient- og sundhedspersonale informationerne står i de tilhørende tekstbokse & Patient- og sundhedspersonale informationerne står i de tilhørende tekstbokse & OK \\\hline
+
+7 & Tryk på knappen 'Gem' i 'Panelet' på UIKontor & Alle tekstbokse og knapper i 'Panelet' på UIKontor bliver disabled med undtagelse af knapperne 'Rediger' og 'Udskriv'. Patientens og sundhedspersonalets  data kan ses gemt i lokaldatabasen & Alle tekstbokse og knapper i 'Panelet' på UIKontor bliver disabled med undtagelse af knapperne 'Rediger' og 'Udskriv'. Patientens og sundhedspersonalets  data kan ses gemt i lokaldatabasen & OK \\\hline
+
+\end{tabular}
+%------------------------------------------------------------------------
+\\
+\subsection{Start monitorering}
+%Tabel for Start monitorering
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Start monitorering} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{l|}{\parbox{0.6\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Patienten har påmonteret elektroder
+\item Elektroder er tilkoblet EKG-måleren
+\item EKG-måleren er tændt og tilkoblet G4-EKG
+\item Use case 'Indskriv patient' er kørt
+\item 'Start/Stop-indikatoren' er rød
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1-5 & Tryk på 'Start' i 'Patientboksen' på UIKontor & 'Start/stop-indikatoren' bliver grøn og efter 10 sekunder (+ 1 sekund) vises EKG-målinger, HRV, Puls og en af indikationerne (D1, D2) på UIPatient. EKG-målingerne er gemt i lokaldatabasen og i den offentlige database & 'Start/stop-indikatoren' bliver grøn og efter 10 sekunder (+ 1 sekund) vises EKG-målinger, HRV, Puls og en af indikationerne (D1, D2) på UIPatient. EKG-målingerne er gemt i lokaldatabasen og i den offentlige database. & OK \\\hline
+
+6 & Efter første måling observeres UIPatient & Efter 10 sekunder (+ 1 sekund) fremvises 10 sekunders nye EKG-målinger, HRV, Puls og en af indikationerne (D1, D2) på UIPatient. De nye EKG-målinger er gemt i lokaldatabasen og i den offentlige database. & Efter 10 sekunder (+ 1 sekund) fremvises 10 sekunders nye EKG-målinger, HRV, Puls og en af indikationerne (D1, D2) på UIPatient. De nye EKG-målinger er gemt i lokaldatabasen og i den offentlige database. & OK \\\hline
+
+7 & Observer UIPatient & For hvert 10. sekund (+ 1 sekund) opdateres EKG-målingen, HRV, Puls og en af indikationerne (D1, D2) på UIPatient. Hver måling er gemt i lokaldatabasen og i den offentlige database. & For hvert 10. sekund (+ 1 sekund) opdateres EKG-målingen, HRV, Puls og en af indikationerne (D1, D2) på UIPatient. Hver måling er gemt i lokaldatabasen og i den offentlige database. & OK \\\hline
+\end{tabular}
+\\
+%------------------------------------------------------------------------
+\subsection{Stop monitorering}
+%Tabel for Stop monitorering
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Stop monitorering} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{l|}{\parbox{0.6\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Use case 'Start monitorering' er aktiv
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1-3 & Tryk på 'Stop' i 'Patientboksen' på UIKontor & 'Start/stop-indikatoren' bliver rød og default værdier vises på UIPatient & 'Start/stop-indikatoren' bliver rød og default værdier vises på UIPatient & OK \\\hline
+
+\end{tabular}
+\\
+%------------------------------------------------------------------------
+\subsection{Vis patientdata}
+%Tabel for Vis patientdata
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Vis patientdata} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{l|}{\parbox{0.6\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Patienten, der ønskes data fra, er allerede tilføjet G4-EKG 
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1-2 & Tryk på 'Patientboksen' på UIKontor & Alle patient- og sundhedspersonale data til den tilhørende 'Patientboks' vises i 'Panelet' på UIKontor & Alle patient- og sundhedspersonale data til den tilhørende 'Patientboks' vises i 'Panelet' på UIKontor & OK \\\hline
+
+\end{tabular}
+\\
+%------------------------------------------------------------------------
+
+\subsection{Rediger patientdata}
+%Tabel for Rediger patientdata
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Rediger patientdata} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{l|}{\parbox{0.6\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Patientdata, der ønskes redigeret, er allerede tilføjet G4-EKG 
+\item Sundhedspersonalet har trykket på den 'Patientboks' der tilhører den patients data, som ønskes redigeret
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1-2 & Tryk på 'Rediger' i 'Panelet' på UIKontor & Følgende tekstbokse og knapper i 'Panelet' bliver enabled: 'Fornavn', 'Efternavn', 'CPR', 'Stue nr', 'Indlæggelsesdato', 'Ansvarlig ID', 'Ansvarlig Fornavn', 'Ansvarlig Efternavn', 'Organisation', knappen 'Gem' og 'Annuller' & Følgende tekstbokse og knapper i 'Panelet' bliver enabled: 'Fornavn', 'Efternavn', 'CPR', 'Stue nr', 'Indlæggelsesdato', 'Ansvarlig ID', 'Ansvarlig Fornavn', 'Ansvarlig Efternavn', 'Organisation', knappen 'Gem' og 'Annuller' & OK \\\hline
+3 & Rediger i felterne 'Fornavn', 'Efternavn', 'CPR', 'Stue nr', 'Indlæggelsesdato', 'Ansvarlig ID', 'Ansvarlig Fornavn', 'Ansvarlig Efternavn' og 'Organisation' i 'Panelet' på UIKontor & De redigerede patient- og sundhedspersonale informationer står i de tilhørende tekstbokse & De redigerede patient- og sundhedspersonale informationer står i de tilhørende tekstbokse & OK \\\hline
+
+4 & Tryk på knappen 'Gem' i 'Panelet' på UIKontor & Alle tekstbokse og knapper i 'Panelet' på UIKontor bliver disabled med undtagelse af knapperne 'Rediger' og 'Udskriv'. Patientens- og sundhedspersonalets data kan ses gemt i lokaldatabasen. & Alle tekstbokse og knapper i 'Panelet' på UIKontor bliver disabled med undtagelse af knapperne 'Rediger' og 'Udskriv'. Patientens- og sundhedspersonalets data kan ses gemt i lokaldatabasen. & OK \\\hline
+
+\end{tabular}
+\\
+
+%------------------------------------------------------------------------
+\subsection{Print EKG}
+%Tabel for Print EKG
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Print EKG} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{l|}{\parbox{0.6\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Use case 'Start monitorering' er kørt 
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1-2 & Tryk på 'Print' i 'Patientboksen' på UIKontor & UIPrint åbnes & UIPrint åbnes & OK \\\hline
+
+3-6 & Vælg database der ønskes måling fra, samt tidspunkt for foretaget måling. Tryk på 'Print' på UIPrint & EKG fra valgte database og tidspunkt vises på UIPrint & EKG fra valgte database og tidspunkt vises på UIPrint & OK \\\hline
+
+\end{tabular}
+\\
+%------------------------------------------------------------------------
+
+\subsection{Udskriv patient}
+%Tabel for Udskriv patient
+\begin{tabular}{|p{1cm}|p{3cm}|p{4cm}|p{4cm}|p{2cm}|}
+\hline
+\multicolumn{2}{|p{4cm}|}{\textbf{Use case under test:}} & \multicolumn{3}{c|}{Udskriv Patient} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Scenarie:}} & \multicolumn{3}{c|}{Hovedscenarie} \\\hline
+
+\multicolumn{2}{|p{3cm}|}{\textbf{Prækondition:}}  & \multicolumn{3}{l|}{\parbox{0.6\textwidth}{
+\begin{itemize}[label=$\circ$]
+\item Patienten, der ønskes udskrevet, er allerede tilføjet G4-EKG
+\item Sundhedspersonalet har trykket på den 'Patientboks', som tilhører den patient, der ønskes udskrevet
+\item Der udføres ikke EKG-målinger på patienten, der ønskes udskrevet.  
+\end{itemize} }}\\\hline
+
+\multicolumn{5}{|c|}{} \\\hline
+
+\textbf{Step} & \textbf{Handling} & \textbf{Forventet observation} & \textbf{Faktisk observation / Resultat} & \textbf{Vurdering (OK/Fail)}\\\hline
+
+1-2 & Tryk på knappen 'Udskriv' i 'Panelet' på UIKontor & Messagebox vises med teksten: "Er du sikker på at du vil udskrive denne patient?" & Messagebox vises med teksten: "Er du sikker på at du vil udskrive denne patient?" & OK \\\hline
+3-4 & Tryk på 'Ja' på Messageboxen & Patients data fjernes fra 'Panelet' og 'Patientboks' på UIKontor. & Patients data fjernes fra 'Panelet' og 'Patientboks' på UIKontor. & OK \\\hline
+
+\end{tabular}
+\\
+%------------------------------------------------------------------------
+
+\section{Test af ikke-funktionelle krav}
+\subsection{Generelle ikke-funktionelle krav}
+\begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{4cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|}
+\hline
+\textbf{Nr.} & \textbf{Krav} & \textbf{Test}& \textbf{Forventet observation/ resultat}& \textbf{Faktisk observation/ resultat}& \textbf{Vurde- ring (OK/FAIL)}\\\hline
+ 1 & Ved alarm spilles Bee Gees 'Staying Alive' & Mål på simuleret patient med enten STEMI eller non-STEMI. & Alarmen spiller Bee Gees 'Staying Alive' & Alarmen spiller Bee Gees 'Staying Alive' & OK\\\hline
+ 2 & Efter 10 minutters introduktion til systemet, bør en bruger kunne foretage en måling på en patient & Vi lader 5 brugere, med 10 minutters kendskab til systemet, foretage en måling på en patient & Alle 5 brugere kan foretage en succesfuld måling & Ikke testet &  \\\hline
+ 3 & Systemet skal kunne detektere 95\% af alle tilfælde af: STEMI og Non-Stemi & Der fortages 50 målinger og to fagpersoner tjekker målinger for STEMI og Non-Stemi & Succes raten med, at detekter STEMI og Non-Stemi, er på mindst 95\% & Kan ikke testes & \\\hline
+ 4 & Systemet måler EKG'et med en frekvens på 500 Hz & Man indsætter breakpoint og der trykkes på startknappen & Der vil blive indlæst 5000 målinger på 10 sekunder & Der vil blive indlæst 5000 målinger på 10 sekunder & OK \\\hline
+ 5 & Systemet skal kunne fortage målinger fejlfrit i minimum 30 minutter & Der trykkes på start og der ventes 30 minutter & Systemet kører forsat efter de 30 minutter & Race Conditions & FAIL \\\hline
+ 6 & Systemet er kompatibelt på alle Windows platforme nyere end Windows XP og til og med Windows 10 & Vi kører systemet på alle platforme nyere end Windows XP til og med Windows 10 & Systemet fungerer på alle platforme nyere end Windows XP og til og med Windows 10 & Kan ikke testes & \\\hline
+ 7 & Systemet skal kunne håndtere 6 patienter ad gangen med én EKG-afledning pr. patient & Vi tilkobler 6 patienter og trykker på start for alle 6 patienter på en EKG-afdeling & Systemet kan håndtere alle 6 patienter ad gangen med én EKG-afdeling pr. patient & Kan ikke testes&  \\\hline
+\end{tabular}
+\end{table}
+
+\subsection{UIKontor}
+\begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{4cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|}
+\hline
+\textbf{Nr.} & \textbf{Krav} & \textbf{Test}& \textbf{Forventet observation/ resultat}& \textbf{Faktisk observation/ resultat}& \textbf{Vurde- ring (OK/FAIL)}\\\hline
+ 1 & UIKontor består af 'panelet' i venstre side og 6 'patientbokse' i højre side & Man tæller om der er 6 'patientbokse' og et 'panel'& Der er 6 'patientbokse' og et 'panel' & Der er 6 'patientbokse' og et 'panel' & OK\\\hline
+ 2 & De 6 'patientbokse' er med default værdier identiske & Man sammenligner de 6 'patientbokse' inden indskrivning af patient & De 6 'patientbokse' er identiske & De 6 'patientbokse' er identiske & OK \\\hline
+ 3 & 'Panelet' repræsenterer den valgte 'Patientboks' data &Den valgte 'Patientsboks's data stemmer overens med 'Panelet's & 'Patientboks' stemmer overens med 'panelet' & 'Patientboks' stemmer overens med 'panelet' & OK \\\hline
+ 4 & 'Panelet' har knappen 'Indskriv' & Se om 'Panelet' indeholder en 'Indskriv' knap & 'Panelet' indeholder en 'Indskriv' knap & 'Panelet' indeholder en 'Indskriv' knap & OK \\\hline
+ 5 & 'Panelet' har knappen 'Udskriv' & Se om 'Panelet' indeholder en 'Udskriv' knap & 'Panelet' indeholder en 'Udskriv' knap & 'Panelet' indeholder en 'Udskriv' knap & OK \\\hline
+ 6 & 'Panelet' har knappen 'Rediger' & Se om 'Panelet' indeholder en 'Rediger' knap & 'Panelet' indeholder en 'Rediger' knap& 'Panelet' indeholder en 'Rediger' knap & OK \\\hline
+ 7 & 'Panelet' har knappen 'Gem' & Se om 'Panelet' indeholder en 'Gem' knap & 'Panelet' indeholder en 'Gem' knap & 'Panelet' indeholder en 'Gem' knap & OK \\\hline
+  8 & 'Panelet' har knappen 'Annuller' & Se om 'Panelet' indeholder en 'Annuller' knap & 'Panelet' indeholder en 'Annuller' knap & 'Panelet' indeholder en 'Annuller' knap & OK \\\hline
+ 9 & 'Panelet' har textboksen 'Fornavn' med tilhørende label 'Fornavn & Se om 'Panelet' indeholder textboksen 'Fornavn' og labelen 'Fornavn' & 'Panelet' indeholder textboksen 'Fornavn' og labelen 'Fornavn' & 'Panelet' indeholder textboksen 'Fornavn' og labelen 'Fornavn' & OK \\\hline
+  10 & 'Panelet' har textboksen 'Efternavn' med tilhørende label 'Efternavn & Se om 'Panelet' indeholder textboksen 'Efternavn' og labelen 'Efternavn' & 'Panelet' indeholder textboksen 'Efternavn' og labelen 'Efternavn' & 'Panelet' indeholder textboksen 'Efternavn' og labelen 'Efternavn'& OK \\\hline
+ \end{tabular}
+\end{table}
+ 
+ \begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{4cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|}
+\hline
+ 11 & 'Panelet' har textboksen 'CPR' med tilhørende label 'CPR & Se om 'Panelet' indeholder textboksen 'CPR' og labelen 'CPR' & 'Panelet' indeholder textboksen 'CPR' og labelen 'CPR' & 'Panelet' indeholder textboksen 'CPR' og labelen 'CPR' & OK \\\hline
+ 12 & 'Panelet' har textboksen 'Stue nr.' med tilhørende label 'Stue nr. & Se om 'Panelet' indeholder textboksen 'Stue nr.' og labelen 'Stue nr.' & 'Panelet' indeholder textboksen 'Stue nr.' og labelen 'Stue nr.' &'Panelet' indeholder textboksen 'Stue nr.' og labelen 'Stue nr.'& OK \\\hline
+ 13 & 'Panelet' har en datetimepicker 'Indlæggelsesdato' med tilhørende label 'Indlæggelsesdato & Se om 'Panelet' indeholder en datetimepicker 'Indlæggelsesdato' og labelen 'Indlæggelsesdato' & 'Panelet' indeholder en datetimepicker 'Indlæggelsesdato' og labelen 'Indlæggelsesdato' &'Panelet' indeholder en datetimepicker 'Indlæggelsesdato' og labelen 'Indlæggelsesdato' & OK \\\hline 
+ 14 & 'Panelet' har en tekstboksen 'Ansvarlig fornavn' med tilhørende label 'Ansvarlig fornavn' & Se om 'Panelet' indeholder en tekstboks 'Ansvarlig fornavn' og labelen 'Ansvarlig fornavn' & 'Panelet' indeholder en tekstboks 'Ansvarlig fornavn' og labelen 'Ansvarlig fornavn' & 'Panelet' indeholder en tekstboks 'Ansvarlig fornavn' og labelen 'Ansvarlig fornavn'' & OK \\\hline
+ 15 & 'Panelet' har en tekstboksen 'Ansvarlig efternavn' med tilhørende label 'Ansvarlig efternavn' & Se om 'Panelet' indeholder en tekstboks 'Ansvarlig efternavn' og labelen 'Ansvarlig efternavn' & 'Panelet' indeholder en tekstboks 'Ansvarlig efternavn' og labelen 'Ansvarlig efternavn' & 'Panelet' indeholder en tekstboks 'Ansvarlig efternavn' og labelen 'Ansvarlig efternavn' & OK \\\hline
+  16 & 'Panelet' har en tekstboksen 'Organisation' med tilhørende label 'Organisation' & Se om 'Panelet' indeholder en tekstboks 'Organisation' og labelen 'Organisation' & 'Panelet' indeholder en tekstboks 'Organisation' og labelen 'Organisation' & 'Panelet' indeholder en tekstboks 'Organisation' og labelen 'Organisation'& OK \\\hline
+17 & 'Panelet' har en tekstboksen 'Ansvarlig medarbejder ID' med tilhørende label 'Ansvarlig medarbejder ID' & Se om 'Panelet' indeholder en tekstboks 'Ansvarlig medarbejder ID' og labelen 'Ansvarlig medarbejder ID' & 'Panelet' indeholder en tekstboks 'Ansvarlig medarbejder ID' og labelen 'Ansvarlig medarbejder ID' & 'Panelet' indeholder en tekstboks 'Ansvarlig medarbejder ID' og labelen 'Ansvarlig medarbejder ID' & OK \\\hline
+ \end{tabular}
+ \end{table}
+ 
+\begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{4cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|}
+\hline
+ 18 & Alle knapper og textbokse er pr. default disabled & Start program. Visuel test: se om alle knapper og textbokse er disabled & Alle knapper og textbokse er disabled & Alle knapper og textbokse er disabled & OK \\\hline
+ 19 & 'Patientboks' har knappen 'Start' & Visuel test: se om 'Patientboks' indeholder knappen 'Start' & 'Patientboks' indeholder knappen 'Start' & 'Patientboks' indeholder knappen 'Start' & OK \\\hline
+ 20 & 'Patientboks' har knappen 'Stop' & Visuel test: se om 'Patientboks' indeholder knappen 'Stop' & 'Patientboks' indeholder knappen 'Stop' & 'Patientboks' indeholder knappen 'Stop'  & OK \\\hline
+ 21 & 'Patientboks' har knappen 'Print' & Visuel test: se om 'Patientboks' indeholder knappen 'Print' & 'Patientboks' indeholder knappen 'Print' & 'Patientboks' indeholder knappen 'Print' & OK \\\hline
+ 22 & 'Patientboks' har en 'Start/Stop-indikator' & Visuel test: se om 'Patientboks' har en 'Start/Stop-indikator' & 'Patientboks' indeholder en 'Start/Stop-indikator' & 'Patientboks' indeholder en 'Start/Stop-indikator' & OK \\\hline
+  23 & Når monitoreringen foretages er 'Start/Stop-indikatoren' grøn (ARGB:255,0,255,0) & Tryk på start og sammenlign den grønne indikator med farvekoden ARGB: 255,0,255,0 & Den grønne indikator stemmer overens med farvekoden ARGB :255,0,255,0 & Den grønne indikator stemmer overens med farvekoden ARGB :255,0,255,0 & OK \\\hline
+ 24 & Når monitoreringen ikke foretages er 'Start/Stop-indikatoren' rød (ARGB:255,178,34,34) & Tilføj en patient og sammenlign den røde indikator med farvekoden ARGB: 255,178,34,34 & Den røde indikator stemmer overens med farvekoden ARGB: 255,178,34,34 &  Den røde indikator stemmer overens med farvekoden ARGB: 255,178,34,34 & OK \\\hline
+25 & Når der ikke er tilføjet en patient til en 'Patientboks' er 'Start/Stop-indikatoren' grå(ARGB: 255,128,128,128) & Før patient tilføjes, sammenlignes  den grå indikator med farvekoden ARGB: 255,128,128,128 & Den grå indikator stemmer overens med farvekoden ARGB: 255,128,128,128 & Den grå indikator stemmer overens med farvekoden ARGB: 255,128,128,128 & OK \\\hline
+ \end{tabular}
+\end{table}
+
+ \begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{4cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|}
+\hline
+ 26 & 'Patientboks' har en label 'CPR Nr:' med tilhørende tekstboks & Visuel test: se om 'Patientboks' indeholder labelen 'CPR Nr:' med tilhørende tekstboks  & 'Patientboks' indeholder labelen 'CPR Nr:' med tilhørende tekstboks & 'Patientboks' indeholder labelen 'CPR Nr:' med tilhørende tekstboks & OK \\\hline
+ 27 & 'Patientboks' har en label 'Stue Nr:'med tilhørende tekstboks & Visuel test: se om 'Patientboks' indeholder labelen 'Stue Nr:' med tilhørende tekstboks & 'Patientboks' indeholder labelen 'Stue Nr:' med tilhørende tekstboks & 'Patientboks' indeholder labelen 'Stue Nr:' med tilhørende tekstboks & OK \\\hline
+  28 & Brugergrænsefladen skal opbygges efter figur 1.3 i afsnit 1.7 Brugergrænseflade i Kravsspecifikation - G4-EKG & Visuel test: se om brugergrænsefladen er opbygget efter figuren & Brugergrænsefladen er opbygget efter figuren &Brugergrænsefladen er opbygget efter figuren & OK \\\hline
+\end{tabular}
+\end{table}
+\subsection{UIPatient}
+\begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{4cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|}
+\hline
+\textbf{Nr.} & \textbf{Krav} & \textbf{Test}& \textbf{Forventet observation/ resultat}& \textbf{Faktisk observation/ resultat}& \textbf{Vurde- ring (OK/FAIL)}\\\hline
+ 1 & UIpatient har textboksen 'Puls' med tilhørende label 'Puls bpm:' & Visuel test: se om UIPatient har textboksen 'Puls bpm' med labelen 'Puls bpm:' & UIPatient har textboksen 'Puls bpm' med labelen 'Puls bpm:' & UIPatient har textboksen 'Puls bpm' med labelen 'Puls bpm:' & OK \\\hline
+ 2 & UIpatient har textboksen 'HRV' med tilhørende label 'HRV:' & Visuel test: se om UIPatient har textboksen 'HRV' med labelen 'HRV:' & UIPatient har textboksen 'HRV' med labelen 'HRV:' & UIPatient har textboksen 'HRV' med labelen 'HRV:' & OK \\\hline 
+ 3 & UIpatient har textboksen 'BT mmHg' med tilhørende label 'BT mmHg:' & Visuel test: se om UIPatient har textboksen 'BT mmHg' med labelen 'BT mmHg:' & UIPatient har textboksen 'BT mmHg' med labelen 'BT mmHg:' & UIPatient har textboksen 'BT mmHg' med labelen 'BT mmHg:' & OK \\\hline 
+ 4 & UIpatient har textboksen 'SpO2 \%' med tilhørende label 'SpO2 \%:' & Visuel test: se om UIPatient har textboksen 'SpO2 \%' med labelen 'SpO2 \%:' & UIPatient har textboksen 'SpO2 \%' med labelen 'SpO2 \%:' & UIPatient har textboksen 'SpO2 \%' med labelen 'SpO2 \%:' & OK \\\hline 
+ 5 & UIpatient har textboksen 'Indikationsboks' med tilhørende label 'Indikation:' & Visuel test: se om UIPatient har textboksen 'Indikationsboks' med labelen 'Indikation:' & UIPatient har textboksen 'Indikationsboks' med labelen 'Indikation:' & UIPatient har textboksen 'Indikationsboks' med labelen 'Indikation:' & OK \\\hline
+ 6 & UIpatient har en chart med tilhørende label  'EKG' & Visuel test: se om UIPatient har en chart med tilhørende label 'EKG' & UIpatient har en chart med tilhørende label  'EKG' & UIpatient har en chart med tilhørende label  'EKG' & OK \\\hline
+ 7 & Alle textbokse og labels er disabled & Visuel test: se om alle textbokse og labels er disabled & Alle textbokse og labels er disabled & Alle textbokse og labels er enabled & FAIL \\\hline
+ 8 & Brugergrænsefladen skal opbygges efter figur 1.4 i afsnit 1.7 Brugergrænseflader i Kravsspecifikation - G4-EKG & Visuel test: se om brugergrænsefladen er opbygget efter figuren & Brugergrænsefladen er opbygget efter figuren & Brugergrænsefladen er opbygget efter figuren & OK \\\hline
+ \end{tabular}
+ \end{table}
+
+\subsection{UIPrint}
+\begin{table}[H]
+\begin{tabular}{|p{0.5cm}|p{4cm}|p{3cm}|p{3cm}|p{3cm}|p{1cm}|}
+\hline
+\textbf{Nr.} & \textbf{Krav} & \textbf{Test}& \textbf{Forventet observation/ resultat}& \textbf{Faktisk observation/ resultat}& \textbf{Vurde- ring (OK/FAIL)}\\\hline
+ 1 & UIPrint har en chart med en label 'EKG' & Visuel test: se om UIPrint har en label 'EKG' & UIPrint har en chart med en label 'EKG' & UIPrint har en chart med en label 'EKG' & OK \\\hline
+ 2 & Charten har giterlinjer svarende til 0.04 sekunder på x-aksen og 0.1mV på y-aksen & Visuel test: se om UIPrints chart har giterlinjer svarende til 0.04 sekunder på x-aksen og 0.1mV på y-aksen & Charten har giterlinjer svarende til 0.04 sekunder på x-aksen og 0.1mV på y-aksen & Charten har giterlinjer svarende til 0.04 sekunder på x-aksen og 0.1mV på y-aksen & OK \\\hline
+ 3 & UIPrint har en combobox med en label 'Tidspunkt' & Visuel test: se om UIPrint har en combobox med en label 'Tidspunkt'  & UIPrint har en combobox med en label 'Tidspunkt' & UIPrint har en combobox med en label 'Tidspunkt' & OK \\\hline 
+ 4 & UIPrint har en combobox med en label 'Database' & Visuel test: se om UIPrint har en combobox med en label 'Database' & UIPrint har en combobox med en label 'Database' & UIPrint har en combobox med en label 'Database' & OK \\\hline
+ 5 & Comboboxens valgmuligheder er 'Lokal' og 'offentlig' database & Visuel test: se om comboboxens valgmuligheder er 'Lokal' og 'Offentlig' database  & Comboboxens valgmuligheder er 'Lokal' og 'Offentlig' database &Comboboxens valgmuligheder er 'Lokal' og 'Offentlig' database & OK \\\hline 
+ 6 & UIPrint har knappen 'Print' & Visuel test: se om UIPrint har knappen 'Print'  & UIPrint har knappen 'Print' & UIPrint har knappen 'Print' & OK \\\hline   
+ 7 & Brugergrænsefladen skal opbygges efter figur 1.5 i afsnit 1.7 Brugergrænseflader i Kravsspecfikation - G4-EKG & Visuel test: se om brugergrænsefladen er opbygget efter figuren & Brugergrænsefladen er opbygget efter figuren &Brugergrænsefladen er opbygget efter figuren & OK \\\hline
+\end{tabular}
+\end{table}
+\end{flushleft}
